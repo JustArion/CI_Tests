@@ -45,11 +45,11 @@ jobs:
         - name: Run Project Tests Before Release
           run: dotnet test ./src/
 
-        - name: Install Velopack tool
+        - name: Setup .NET Velopack
           run: make install_velopack
 
         - name: Build and Package Release
-          run: make velopack VERSION="${GITHUB_REF#refs/tags/v}"
+          run: make velopack VERSION="$($env:GITHUB_REF -replace '^refs/tags/v', '')"
 
         - name: Create GitHub Release
           id: create_release
