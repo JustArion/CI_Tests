@@ -20,7 +20,8 @@ jobs:
         with:
           dotnet-version: '8.0.X'
           cache: true
-      - run: dotnet restore --locked-mode
+          cache-dependency-path: '**/packages.lock.json'
+      - run: dotnet restore ./src/ --locked-mode
 
       - name: Run tests manually
         run: dotnet test ./src/
@@ -39,7 +40,8 @@ jobs:
           with:
             dotnet-version: '8.0.X'
             cache: true
-        - run: dotnet restore --locked-mode
+            cache-dependency-path: '**/packages.lock.json'
+        - run: dotnet restore ./src/ --locked-mode
 
         - name: Run tests before release
           run: dotnet test ./src/
