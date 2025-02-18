@@ -1,4 +1,4 @@
-name: CI and Release
+name: Tests & CI Releases
 
 on:
   workflow_dispatch:
@@ -9,7 +9,6 @@ on:
 
 jobs:
   manual-test:
-    if: ${{ github.event_name == 'workflow_dispatch' }}
     runs-on: windows-latest
     steps:
       - uses: actions/checkout@v4
@@ -21,6 +20,7 @@ jobs:
         run: dotnet test ./src/
 
   release:
+      needs: manual-test
       if: ${{ github.event_name == 'push' }}
       runs-on: windows-latest
       steps:
