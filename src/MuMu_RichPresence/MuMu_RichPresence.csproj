@@ -13,6 +13,9 @@
     <RootNamespace>Dawn.MuMu.RichPresence</RootNamespace>
     <ApplicationIcon>Assets\AppIcon_Blue.ico</ApplicationIcon>
     <Company>https://github.com/JustArion</Company>
+
+    <!-- This is so that CI can cache nuget dependencies -->
+    <DisableImplicitNuGetFallbackFolder>true</DisableImplicitNuGetFallbackFolder>
   </PropertyGroup>
 
   <PropertyGroup Label="Versioning">

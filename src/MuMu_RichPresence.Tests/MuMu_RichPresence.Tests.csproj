@@ -9,6 +9,9 @@
         <IsTestProject>true</IsTestProject>
         <AssemblyName>MuMu_RichPresence.Tests</AssemblyName>
         <RootNamespace>MuMu_RichPresence.Tests</RootNamespace>
+
+        <!-- This is so that CI can cache nuget dependencies -->
+        <DisableImplicitNuGetFallbackFolder>true</DisableImplicitNuGetFallbackFolder>
     </PropertyGroup>
 
     <ItemGroup>
