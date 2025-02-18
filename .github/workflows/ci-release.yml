@@ -64,6 +64,8 @@ jobs:
               - [.NET 8.0 Desktop Runtime](https://dotnet.microsoft.com/en-us/download/dotnet/thank-you/runtime-desktop-8.0.13-windows-x64-installer)
 
         - name: Upload assets from bin folder
+          env:
+            GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           run: |
             Write-Output "Uploading files from ./bin/..."
             ls ./bin/ | ForEach-Object { 
@@ -73,6 +75,8 @@ jobs:
             gh release upload ${{ github.ref_name }} "$file" --clobber
             }
         - name: Upload assets from velopack folder
+          env:
+            GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           run: |
             Write-Output "Uploading files from ./velopack/..."
             ls ./velopack/ | ForEach-Object { 
