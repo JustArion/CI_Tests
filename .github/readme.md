@@ -13,7 +13,7 @@
 - [Permissions](#permissions)
 
 ### Requirements
-[.NET 8.0.X Desktop Runtime](https://dotnet.microsoft.com/en-us/download/dotnet/8.0) (x64)
+[.NET 8.0.X Desktop Runtime](https://dotnet.microsoft.com/en-us/download/dotnet/thank-you/runtime-desktop-8.0.13-windows-x64-installer) (x64)
 
 ---
 ### Installation
