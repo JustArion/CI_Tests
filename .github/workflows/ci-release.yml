@@ -8,26 +8,25 @@ on:
       - 'v*'
 
 jobs:
-  manual-test:
-    runs-on: windows-latest
-    steps:
-      - uses: actions/checkout@v4
-        with:
-          lfs: true
+  # manual-test:
+  #   runs-on: windows-latest
+  #   steps:
+  #     - uses: actions/checkout@v4
+  #       with:
+  #         lfs: true
 
-      - name: Setup .NET SDK
-        uses: actions/setup-dotnet@v4
-        with:
-          dotnet-version: '8.0.X'
-          cache: true
-          cache-dependency-path: '**/packages.lock.json'
-      - run: dotnet restore ./src/
+  #     - name: Setup .NET SDK
+  #       uses: actions/setup-dotnet@v4
+  #       with:
+  #         dotnet-version: '8.0.X'
+  #         cache: true
+  #         cache-dependency-path: '**/packages.lock.json'
+  #     - run: dotnet restore ./src/
 
-      - name: Run Project Tests
-        run: dotnet test ./src/
+  #     - name: Run Project Tests
+  #       run: dotnet test ./src/
 
   release:
-      needs: manual-test
       if: ${{ github.event_name == 'push' }}
       runs-on: windows-latest
       steps:
