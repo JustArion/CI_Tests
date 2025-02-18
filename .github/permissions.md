@@ -1,0 +1,31 @@
+﻿- `IO`
+    - Connects to named pipe (`discord-ipc-{0}`)
+        - Handled by Nuget package [DiscordRichPresence](https://www.nuget.org/packages/DiscordRichPresence)
+    - `Write Access`
+        - Writes a single Log File to the `MuMu RichPresence.exe` directory
+            - `MuMu RichPresence.log`
+        - _Can_ create a single registry key (`\HKCU\Software\Microsoft\Windows\CurrentVersion\Run\MuMu RichPresence`)
+            - Default is off, configurable by the user
+    - `Read Access`
+        - Reads Start Menu shortcuts for `MuMu Player*`
+        - Walks the directory of the file found previously (`MuMu Player*`)
+            - `../vms/???/logs/shell.log`
+        - Reads the file (`Logs/shell.log`) if it exists
+            - See [Technical-Document](technical-1.md)
+        - Reads directory changes for a single directory (`Logs/`)
+            - The "File System Watcher" watches for changes on `shell.log` only
+        - Reads a single registry key (`\HKCU\Software\Microsoft\Windows\CurrentVersion\Run\MuMu RichPresence`)
+            - Run on Startup
+- `Network`
+    - `Download Access`
+        - _Can_ download updates from `https://github.com/JustArion/MuMu_RichPresence`
+            - Handled by Nuget package [Velopack](https://www.nuget.org/packages/Velopack)
+        - Accesses the site `https://play.google.com/store/apps/details?id=`
+    - `Upload Access`
+        - Sends telemetry (`http://localhost:9999`)
+            - Configurable by the user / command line, Handled by Nuget package [Serilog.Sinks.Seq](https://www.nuget.org/packages/Serilog.Sinks.Seq) & external application ([Seq](https://datalust.co/seq))
+- `Process`
+    - `Read Access`
+        - Looks for the file path of process `MuMuPlayer.exe`
+        - Checks how many processes of`MuMuPlayer.exe` are running
+            - Clears Rich Presence when process ends
