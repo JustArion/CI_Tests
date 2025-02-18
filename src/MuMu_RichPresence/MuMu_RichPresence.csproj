@@ -16,6 +16,7 @@
 
     <!-- This is so that CI can cache nuget dependencies -->
     <DisableImplicitNuGetFallbackFolder>true</DisableImplicitNuGetFallbackFolder>
+    <RestorePackagesWithLockFile>true</RestorePackagesWithLockFile>
   </PropertyGroup>
 
   <PropertyGroup Label="Versioning">
