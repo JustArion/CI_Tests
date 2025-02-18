@@ -23,7 +23,7 @@ jobs:
           cache-dependency-path: '**/packages.lock.json'
       - run: dotnet restore ./src/
 
-      - name: Run tests manually
+      - name: Run Project Tests
         run: dotnet test ./src/
 
   release:
@@ -43,14 +43,14 @@ jobs:
             cache-dependency-path: '**/packages.lock.json'
         - run: dotnet restore ./src/
 
-        - name: Run tests before release
+        - name: Run Project Tests Before Release
           run: dotnet test ./src/
 
         - name: Install Velopack tool
           run: make install_velopack
 
         - name: Build and Package Release
-          run: make velopack VERSION="${GITHUB_REF#refs/tags/v}
+          run: make velopack VERSION="${GITHUB_REF#refs/tags/v}"
 
         - name: Create GitHub Release
           id: create_release
