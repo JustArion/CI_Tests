@@ -65,16 +65,19 @@ jobs:
 
         - name: Upload assets from bin folder
           run: |
-            echo "Uploading files from ./bin/..."
-            for file in $(find ./bin -type f); do
-              echo "Uploading $file"
-              gh release upload ${{ github.ref_name }} "$file" --clobber
-            done
-
+            Write-Output "Uploading files from ./bin/..."
+            ls ./bin/ | ForEach-Object { 
+            $file = $_.FullName
+            
+            Write-Output "Uploading [ $file ]"
+            gh release upload ${{ github.ref_name }} "$file" --clobber
+            }
         - name: Upload assets from velopack folder
           run: |
-            echo "Uploading files from ./velopack/..."
-            for file in $(find ./velopack -type f); do
-              echo "Uploading $file"
-              gh release upload ${{ github.ref_name }} "$file" --clobber
-            done
+            Write-Output "Uploading files from ./velopack/..."
+            ls ./velopack/ | ForEach-Object { 
+            $file = $_.FullName
+            
+            Write-Output "Uploading [ $file ]"
+            gh release upload ${{ github.ref_name }} "$file" --clobber
+            }
