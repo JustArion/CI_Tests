@@ -28,6 +28,10 @@ jobs:
           with:
             lfs: true
 
+        - name: Show Directory
+          run: ls ./src/MuMu_RichPresence.Tests/Assets
+          shell: powershell
+
         - name: Setup .NET SDK
           uses: actions/setup-dotnet@v4
           with:
