@@ -20,6 +20,7 @@ jobs:
         with:
           dotnet-version: '8.0.X'
           cache: true
+      - run: dotnet restore --locked-mode
 
       - name: Run tests manually
         run: dotnet test ./src/
@@ -38,6 +39,7 @@ jobs:
           with:
             dotnet-version: '8.0.X'
             cache: true
+        - run: dotnet restore --locked-mode
 
         - name: Run tests before release
           run: dotnet test ./src/
